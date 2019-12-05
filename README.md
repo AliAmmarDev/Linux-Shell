@@ -15,24 +15,31 @@ This custom shell supports various built-in commands. The shell also supports ex
 ## Commands
 
 **info**  
+
 Running this command will simply print some information regarding the author of the shell.
 
 **exit**
+
 This command calls the C function exit() which terminates the program immediately.
 
 **pwd**
+
 This command makes a system call to getcwd() which copies the pathname of the current working directory to the array pointed to by currentDirectory. If the path exceeds the size of 1024 bytes, -1 is returned. The array containing the path could be generated straight inside a print statement however if this is the case, every time the system call is made 1024 will be allocated and never freed. To solve this, the array is stored in an array that temp is pointing to which is then freed after the print statement.
 
 **cd**
+
 This command makes a system call to chdir(). This changes the current working directory to the directory specified in the argument (args[1]). If cd is entered with no parameters it will change directory to the home directory using the getenv() system call. This searches for the directory with the environment name 'HOME'.  
 
 **clear**
+
 This command will print '\e[1;1H\e[2J' which clears the screen. This is an American National Standards Institute (ANSI) escape sequence. '\e' is the escape character. ' e[1;1H' relocates the cursor to position (1,1) and '\e[2J' clears the screen.
 
 **mkdir**
+
 mkdir makes a system call to mkdir() which creates a directory(ies) of the names given as parameters. Mkdir will print an error if the directory 'name' already exists. The second argument given in mkdir() is the appropriate permission the newly created directory shall have.  
 
 **rmdir**
+
 Rmdir calls the rmdir command which removes a directory(ies) given as parameters. An error is printed if the directory being removed does not exist.
 
 # Launching processes
